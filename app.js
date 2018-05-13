@@ -5,6 +5,10 @@ const bodyParser = require('body-parser');
 // const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const config = require('./config/dbConfig')
+
+//get mongo/mongoose connected
+mongoose.connect((config.database));
 
 //initialize app
 const app = express();
