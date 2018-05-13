@@ -23,6 +23,9 @@ app.use( (req, res, next) => {
   next();
 })
 
+//enable body-parser
+app.use(bodyParser.json());
+
 //listen on the port
 app.listen(port, () => {
 	console.log('server started & running on port ->',port);
