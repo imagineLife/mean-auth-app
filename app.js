@@ -10,6 +10,10 @@ const config = require('./config/dbConfig')
 //get mongo/mongoose connected
 mongoose.connect((config.database));
 
+//
+mongoose.connection.on('connected', ()=>{
+	console.log('connected to local mongoDB '+config.database);
+})
 //initialize app
 const app = express();
 
@@ -31,7 +35,7 @@ app.use( (req, res, next) => {
 })
 
 //set static folder
-app.use(express.static(path.join(__dirname, 'public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //enable body-parser
 app.use(bodyParser.json());
