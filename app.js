@@ -26,6 +26,9 @@ app.use( (req, res, next) => {
   next();
 })
 
+//set static folder
+app.use(express.static(path.join(__dirname, 'public'));
+
 //enable body-parser
 app.use(bodyParser.json());
 
