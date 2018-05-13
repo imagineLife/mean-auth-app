@@ -9,6 +9,9 @@ const mongoose = require('mongoose');
 //initialize app
 const app = express();
 
+//routes
+const userRoute = require('./routes/users');
+
 //make port var
 const port = 3000;
 
@@ -25,6 +28,9 @@ app.use( (req, res, next) => {
 
 //enable body-parser
 app.use(bodyParser.json());
+
+//USE the user router
+app.use('/users', userRoute);
 
 //listen on the port
 app.listen(port, () => {
