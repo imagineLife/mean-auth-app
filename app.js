@@ -16,3 +16,8 @@ const port = 3000;
 app.listen(port, () => {
 	console.log('server started & running on port ->',port);
 })
+
+//basic route
+app.get('/', (req,res) => {
+	res.send('Basic endpoint served!');
+})
