@@ -12,6 +12,13 @@ const app = express();
 //make port var
 const port = 3000;
 
+//manual CORS
+app.use( (req, res, next) => {
+	res.header("Access-Control-Allow-Origin", " *");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+})
+
 //listen on the port
 app.listen(port, () => {
 	console.log('server started & running on port ->',port);
