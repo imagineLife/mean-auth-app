@@ -10,10 +10,15 @@ const config = require('./config/dbConfig')
 //get mongo/mongoose connected
 mongoose.connect((config.database));
 
-//
+//tell console when mongo is connected
 mongoose.connection.on('connected', ()=>{
 	console.log('connected to local mongoDB '+config.database);
 })
+
+mongoose.connection.on('error', (err)=>{
+	console.log('MONGO DB ERROR: ', err);
+})
+
 //initialize app
 const app = express();
 
