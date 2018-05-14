@@ -49,6 +49,8 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+//load the jwt from config
+require('./config/passport')(passport);
 
 //USE the user router
 app.use('/users', userRoute);
