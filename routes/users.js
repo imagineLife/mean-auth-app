@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const config = require('../config/dbConfig')
 
 //Register endpoint
 router.post('/register', (req, res, next) => {
@@ -28,7 +29,7 @@ router.post('/register', (req, res, next) => {
 })
 
 //Authenticate endpoint
-router.get('/authenticate', (req, res, next) => {
+router.post('/authenticate', (req, res, next) => {
 	//Grab uName & pWord from request
 	const un = req.body.username;
 	const pw = req.body.password;
