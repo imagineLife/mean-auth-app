@@ -45,6 +45,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 //enable body-parser
 app.use(bodyParser.json());
 
+//Passport for authentication
+app.use(passport.initialize());
+app.use(passport.session);
+
+
 //USE the user router
 app.use('/users', userRoute);
 
