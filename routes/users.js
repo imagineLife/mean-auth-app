@@ -29,7 +29,50 @@ router.post('/register', (req, res, next) => {
 
 //Authenticate endpoint
 router.get('/authenticate', (req, res, next) => {
-	res.send('User Auth endpoint served!');
+	//Grab uName & pWord from request
+	const un = req.body.username;
+	const pw = req.body.password;
+
+	User.getUserByUsername(un, (err, user) => {
+		if(err) throw err;
+
+		//if NOT a user
+		if(!user){
+			return res.json({
+				success: false,
+				msg: "that user is not found"
+			})
+		}
+
+		User.comparePassword(pw, user.password. (err, isMatching) => {
+			if(err) throw err;
+
+			//if there IS a matching password
+			if(isMatching){
+				const token = jwt.sign(user, config.secret, {
+					expiresIn: 604800 //1 week
+				})
+
+				res.json({
+					success: true,
+					token: 'jwt '+token,
+					user: {
+						id: user._id,
+						name: user.name,
+						username: user.username,
+						email: user.email
+					}
+				})
+			}else{
+			//if the password doesn't work
+				return res.json({
+					success: false,
+					msg: 'Wrong password'
+				})
+			}
+		})
+	})
+
 })
 
 //Profiel endpoint, protecting later
