@@ -50,7 +50,7 @@ router.post('/authenticate', (req, res, next) => {
 
 			//if there IS a matching password
 			if(isMatching){
-				const token = jwt.sign(user, config.secret, {
+				const token = jwt.sign({data: user}, config.secret, {
 					expiresIn: 604800 //1 week
 				})
 
