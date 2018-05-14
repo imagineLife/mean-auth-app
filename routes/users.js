@@ -6,7 +6,24 @@ const User = require('../model/user');
 
 //Register endpoint
 router.post('/register', (req, res, next) => {
-	res.send('User Register endpoint served!');
+	
+	//new User object
+	let newUser = new User({
+		name: body.name,
+		username: body.username,
+		password: body.password
+	})
+
+	//add the new user obj to mongo
+	User.addUser(newUser, (err, user) => {
+		if(err){
+			res.json({success:false, msg: 'Failed to register user'})
+		}else{
+			res.json({success: true, msg: 'User successfulle registered!'})
+		}
+
+	})
+
 })
 
 //Authenticate endpoint
