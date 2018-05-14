@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 
 //Passport for authentication
 app.use(passport.initialize());
-app.use(passport.session);
+app.use(passport.session());
 
 
 //USE the user router
