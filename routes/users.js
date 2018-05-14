@@ -77,8 +77,10 @@ router.post('/authenticate', (req, res, next) => {
 })
 
 //Profiel endpoint, protecting later
-router.get('/profile', (req, res, next) => {
-	res.send('User profile endpoint served!');
-})
+router.get('/profile', 
+	passport.authenticate('jwt', {session: false}),
+	(req, res, next) => {
+		res.json({user: req.user})
+	})
 
 module.exports = router;
