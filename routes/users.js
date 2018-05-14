@@ -44,7 +44,7 @@ router.get('/authenticate', (req, res, next) => {
 			})
 		}
 
-		User.comparePassword(pw, user.password. (err, isMatching) => {
+		User.comparePassword(pw, user.password, (err, isMatching) => {
 			if(err) throw err;
 
 			//if there IS a matching password
