@@ -17,7 +17,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit(){
-  	console.log('123');
+  	//create object from form fields
+  	const user = {
+  		name: this.name,
+  		username: this.username,
+  		email: this.email,
+  		password: this.password
+  	}
   }
 
 }
