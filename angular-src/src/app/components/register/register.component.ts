@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   email: String;
   password: String;
 
-  constructor() { }
+  constructor(private validateService: ValidateService) { }
 
   ngOnInit() {
   }
