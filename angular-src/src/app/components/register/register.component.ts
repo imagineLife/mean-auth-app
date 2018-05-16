@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ValidateService} from '../../services/validate.service';
 
 @Component({
   selector: 'app-register',
