@@ -25,6 +25,19 @@ export class RegisterComponent implements OnInit {
   		email: this.email,
   		password: this.password
   	}
+  
+    //make sure fields exist
+    if(!this.validateService.validateRegister(user)){
+      console.log('Please fill in all fields');
+      return false;
+    }
+
+    //make sure email is correct
+    if(!this.validateService.validateEmail(user.email)){
+      console.log('Please use a valid email');
+      return false;
+    }
+
   }
 
 }
